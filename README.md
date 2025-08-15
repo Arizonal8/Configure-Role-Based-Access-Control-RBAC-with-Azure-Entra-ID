@@ -6,29 +6,32 @@ It showcases the **Principle of Least Privilege** by configuring different acces
 
 ## Objective
 To configure Azure RBAC so that:
-- **User1** (in the StorageAdmins group) can access and modify storage resources.
-- **User2** (not in the group) is restricted from accessing the storage account.
+- **User1(Mark)** (in the StorageAdmins group) can access and modify storage resources.
+- **User2(Dora)** (not in the group) is restricted from accessing the storage account.
 
 ---
 
 ## Steps Taken
 
 ### 1. Azure Resource Setup
-- Created a **Resource Group** named `RBAC-Project-RG`.
-- Created a **Storage Account** named `rbacstorageproject` in the same region.
+- Created a **Resource Group** named `Meltechresourcegrp`.
+- Created a **Storage Account** named `Meltechstorageaccount` in the same region.
+-  Created a **Virtual Machine** named `Meltechvmachine`.
 
 ### 2. Azure Entra ID Configuration
 - Created two users:
-  - `user1@<tenant>.onmicrosoft.com` (assigned to StorageAdmins group)
-  - `user2@<tenant>.onmicrosoft.com` (no access assigned)
-- Created a **Security Group** named **StorageAdmins**.
+  - `Mark_User1@fortuneihekwemegmail.onmicrosoft.com` (assigned to StorageAdmins group)
+  - `Dora_User2@fortuneihekwemegmail.onmicrosoft.com` (no access assigned)
+- Created a **Security Group** named **Meltechgrp**.
 
 ### 3. Role Assignment
-- Assigned the **Storage Blob Data Contributor** role to the **StorageAdmins** group at the Storage Account level.
+- Assigned the **Storage Blob Data Contributor** role to the **Meltechstorageaccount** group at the Storage Account level.
+- Assigned the **Virtual Machine Administrator Login** role to the **MeltechVirtual Machine**.
 
 ### 4. Testing Access
-- Logged in as **User1** → Successfully accessed and uploaded files to the storage account.
-- Logged in as **User2** → Access denied to the storage account.
+- Logged in as **User1(Mark)** → Successfully accessed and uploaded files to the storage account.
+-  Logged in as **User1(Mark)** → Successfully accessed the resources in the virtual machine.
+- Logged in as **User2(Dora)** → Access denied to the storage account.
 
 ---
 
@@ -37,8 +40,7 @@ Include screenshots of the following:
 1. User creation in Entra ID.
 2. Group creation.
 3. Role assignment to the group.
-4. Successful access by **User1**.
-5. Access denied for **User2**.
+4. Successful access by **User1(Mark)**.
 
 ---
 
@@ -56,13 +58,3 @@ Include screenshots of the following:
 - Azure Storage Account
 - Web Browser for Portal Access
 
----
-
-## Duration
-**5–6 hours** including setup, testing, and documentation.
-
----
-
-## Author
-**[Your Name]**  
-Cloud Security Engineer in Training
